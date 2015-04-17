@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Makov chain for dance</title>
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<script type="text/javascript" src="lib/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="lib/jquery-ui.js"></script>
+	<script type="text/javascript" src="lib/Underscore.js"></script>
+	<script type="text/javascript" src="lib/Backbone.js"></script>
+	<script type="text/javascript" src="lib/backbone-fsm.js"></script>
+</head>
+<body>
+	<div id="console">Markov Chain Experiment</div>
+	<div id="wrapper"></div>
+	<div id="makov-app">
+		<div id="image-sitting" class='image'>
+			<img src="images/sitting.jpg"  class='image'>
+		</div>
+		<div id="image-walking" class='image'>
+			<img src="images/walking.gif" class='image'>
+		</div>
+		<div id="image-running" class='image'>
+			<img src="images/running.gif"  class='image'>
+		</div>
+		<div id="image-hugging" class='image'>
+			<img src="images/hugging.png"  class='image'>
+		</div>
+		<div id="image-following" class='image'>
+			<img src="images/following.png"  class='image'>
+		</div>
+
+
+		<ul id = "state-list"></ul> 
+
+		<div>
+			<select id="samples" name="samples" style="width:200px">
+			<!-- <option value="bipolar">bipolar</option> -->
+			<option value="excited">excited</option>
+			<option value="calm">calm</option>
+			<option value="agitated">agitated</option>
+		</div>
+	<div id="wrapper">bb</div>
+
+	</div>
+
+
+	  <!-- Templates -->
+
+	<script type="text/template" id="state-template">
+		<div class="view">
+		  <input class="toggle" type="checkbox" <%= active ? 'checked="checked"' : '' %> />
+		  <label><%- name %></label>
+		</div>
+		<div id="slider-sitting" class="state-slider"></div>
+		<div id="slider-walking" class="state-slider"></div>
+		<div id="slider-running" class="state-slider"></div>
+		<div id="slider-hugging" class="state-slider"></div>
+		<div id="slider-following" class="state-slider"></div>
+	</script>
+
+	<script type="text/template" id="makov-template">
+		<% if (done) { %>
+		  <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+		<% } %>
+		<div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+	</script>
+
+	<div class="note">
+		some images downloaded from internet, for quick testing purpose.
+	</div>
+
+
+</body>
+<script type="text/javascript" src="js/samples.js"></script>
+<script type="text/javascript" src="js/makov.js"></script>
+</html>
