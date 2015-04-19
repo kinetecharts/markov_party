@@ -1,5 +1,5 @@
 "use strict";
-
+// Used excited mode for 2nd anniversary party night 1
 
 var samples={
 	calm:[
@@ -7,19 +7,19 @@ var samples={
 	        name:"sitting",
 	        transitionProbabilities:{
 	            sitting:0.8,
-	            talking:0.1,
+	            walking:0.1,
 	            running:0.02,
-	            kissing:0.2,
+	            hugging:0.2,
 	            following:0.1
 	        }
 	    },
 	    {
-	        name:"talking",
+	        name:"walking",
 	        transitionProbabilities:{
 	            sitting:0.1,
-	            talking:0.8,
+	            walking:0.8,
 	            running:0.02,
-	            kissing:0.2,
+	            hugging:0.2,
 	            following:0.1
 	        }
 	    },
@@ -27,19 +27,19 @@ var samples={
 	        name:"running",
 	        transitionProbabilities:{
 	            sitting:0.01,
-	            talking:0.39,
+	            walking:0.39,
 	            running:0.5,
-	            kissing:0.1,
+	            hugging:0.1,
 	            following:0.1
 	        }
 	    },
 	    {
-	        name:"kissing",
+	        name:"hugging",
 	        transitionProbabilities:{
 	            sitting:0.3,
-	            talking:0.3,
+	            walking:0.3,
 	            running:0.1,
-	            kissing:0.8,
+	            hugging:0.8,
 	            following:0.5
 	        }
 	    },
@@ -47,9 +47,9 @@ var samples={
 	        name:"following",
 	        transitionProbabilities:{
 	            sitting:0.2,
-	            talking:0.3,
+	            walking:0.3,
 	            running:0.2,
-	            kissing:0.3,
+	            hugging:0.3,
 	            following:0.7
 	        }
 	    }
@@ -59,19 +59,19 @@ var samples={
 	//         name:"sitting",
 	//         transitionProbabilities:{
 	//             sitting:0.3,
-	//             talking:0.02,
+	//             walking:0.02,
 	//             running:0.48,
-	//             kissing:0.4,
+	//             hugging:0.4,
 	//             following:0.3
 	//         }
 	//     },
 	//     {
-	//         name:"talking",
+	//         name:"walking",
 	//         transitionProbabilities:{
 	//             sitting:0.45,
-	//             talking:0.1,
+	//             walking:0.1,
 	//             running:0.2,
-	//             kissing:0.4,
+	//             hugging:0.4,
 	//             following:0.1
 	//         }
 	//     },
@@ -79,19 +79,19 @@ var samples={
 	//         name:"running",
 	//         transitionProbabilities:{
 	//             sitting:0.48,
-	//             talking:0.02,
+	//             walking:0.02,
 	//             running:0.5,
-	//             kissing:0.2,
+	//             hugging:0.2,
 	//             following:0.1
 	//         }
 	//     },
 	//     {
-	//         name:"kissing",
+	//         name:"hugging",
 	//         transitionProbabilities:{
 	//             sitting:0.01,
-	//             talking:0.39,
+	//             walking:0.39,
 	//             running:0.6,
-	//             kissing:0.2,
+	//             hugging:0.2,
 	//             following:0.1
 	//         }
 	//     },
@@ -99,9 +99,9 @@ var samples={
 	//         name:"following",
 	//         transitionProbabilities:{
 	//             sitting:0.01,
-	//             talking:0.39,
+	//             walking:0.39,
 	//             running:0.6,
-	//             kissing:0.2,
+	//             hugging:0.2,
 	//             following:0.1
 	//         }
 	//     }
@@ -111,19 +111,19 @@ var samples={
 	        name:"sitting",
 	        transitionProbabilities:{
 	            sitting:0.2,
-	            talking:0.1,
+	            walking:0.1,
 	            running:0.3,
-	            kissing:0.6,
+	            hugging:0.6,
 	            following:0.1
 	        }
 	    },
 	    {
-	        name:"talking",
+	        name:"walking",
 	        transitionProbabilities:{
-	            sitting:0.4,
-	            talking:0.3,
-	            running:0.2,
-	            kissing:0.1,
+	            sitting:0.1,
+	            walking:0.3,
+	            running:0.6,
+	            hugging:0.4,
 	            following:0.3
 	        }
 	    },
@@ -131,29 +131,29 @@ var samples={
 	        name:"running",
 	        transitionProbabilities:{
 	            sitting:0.02,
-	            talking:0.2,
-	            running:0.3,
-	            kissing:0.3,
+	            walking:0.28,
+	            running:0.7,
+	            hugging:0.3,
 	            following:0.4
 	        }
 	    },
 	    {
-	        name:"kissing",
+	        name:"hugging",
 	        transitionProbabilities:{
-	            sitting:0.3,
-	            talking:0.1,
+	            sitting:0.01,
+	            walking:0.3,
 	            running:0.6,
-	            kissing:0.5,
-	            following:0.2
+	            hugging:0.5,
+	            following:0.3
 	        }
 	    },
 	    {
 	        name:"following",
 	        transitionProbabilities:{
 	            sitting:0.1,
-	            talking:0.3,
+	            walking:0.3,
 	            running:0.6,
-	            kissing:0.2,
+	            hugging:0.2,
 	            following:0.5
 	        }
 	    }
@@ -163,19 +163,19 @@ var samples={
 	        name:"sitting",
 	        transitionProbabilities:{
 	            sitting:0.1,
-	            talking:0.1,
+	            walking:0.1,
 	            running:0.8,
-	            kissing:0.2,
+	            hugging:0.2,
 	            following:0.4
 	        }
 	    },
 	    {
-	        name:"talking",
+	        name:"walking",
 	        transitionProbabilities:{
 	            sitting:0.1,
-	            talking:0.1,
+	            walking:0.1,
 	            running:0.8,
-	            kissing:0.2,
+	            hugging:0.2,
 	            following:0.1
 	        }
 	    },
@@ -183,19 +183,19 @@ var samples={
 	        name:"running",
 	        transitionProbabilities:{
 	            sitting:0.2,
-	            talking:0.05,
+	            walking:0.05,
 	            running:0.4,
-	            kissing:0.2,
+	            hugging:0.2,
 	            following:0.3
 	        }
 	    },
 	    {
-	        name:"kissing",
+	        name:"hugging",
 	        transitionProbabilities:{
 	            sitting:0.01,
-	            talking:0.39,
+	            walking:0.39,
 	            running:0.6,
-	            kissing:0.2,
+	            hugging:0.2,
 	            following:0.3
 	        }
 	    },
@@ -203,9 +203,9 @@ var samples={
 	        name:"following",
 	        transitionProbabilities:{
 	            sitting:0.2,
-	            talking:0.1,
+	            walking:0.1,
 	            running:0.6,
-	            kissing:0.3,
+	            hugging:0.3,
 	            following:0.3
 	        }
 	    }

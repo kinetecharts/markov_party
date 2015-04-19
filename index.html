@@ -11,27 +11,24 @@
 	<script type="text/javascript" src="lib/backbone-fsm.js"></script>
 </head>
 <body>
-	<div id="console">Markov Chain Experiment</div>
-	<div id="wrapper"></div>
+	<div id="console">Markov Chain</div>
+	<div id="credit">Original art work by Raymond Larrett</div>
 	<div id="makov-app">
 		<div id="image-sitting" class='image'>
-			<img src="images/sitting.jpg"  class='image'>
+			<img src="images/sitting.gif"  class='image'>
 		</div>
-		<div id="image-walking" class='image'>
-			<img src="images/walking.gif" class='image'>
+		<div id="image-talking" class='image'>
+			<img src="images/talking.gif" class='image'>
 		</div>
 		<div id="image-running" class='image'>
 			<img src="images/running.gif"  class='image'>
 		</div>
-		<div id="image-hugging" class='image'>
-			<img src="images/hugging.png"  class='image'>
+		<div id="image-kissing" class='image'>
+			<img src="images/kissing.gif"  class='image'>
 		</div>
 		<div id="image-following" class='image'>
-			<img src="images/following.png"  class='image'>
+			<img src="images/following.gif"  class='image'>
 		</div>
-
-
-		<ul id = "state-list"></ul> 
 
 		<div>
 			<select id="samples" name="samples" style="width:200px">
@@ -40,7 +37,13 @@
 			<option value="calm">calm</option>
 			<option value="agitated">agitated</option>
 		</div>
-	<div id="wrapper">bb</div>
+		<div style="display:block">	
+			<input type="checkbox" id="toggle1" name = "toggle1" class = "toggle1">
+			<label for "toggle1"> Show transition probabilities</label>
+		</div>
+
+		<ul id = "state-list"></ul> 
+
 
 	</div>
 
@@ -53,9 +56,9 @@
 		  <label><%- name %></label>
 		</div>
 		<div id="slider-sitting" class="state-slider"></div>
-		<div id="slider-walking" class="state-slider"></div>
+		<div id="slider-talking" class="state-slider"></div>
 		<div id="slider-running" class="state-slider"></div>
-		<div id="slider-hugging" class="state-slider"></div>
+		<div id="slider-kissing" class="state-slider"></div>
 		<div id="slider-following" class="state-slider"></div>
 	</script>
 
@@ -65,10 +68,6 @@
 		<% } %>
 		<div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
 	</script>
-
-	<div class="note">
-		some images downloaded from internet, for quick testing purpose.
-	</div>
 
 
 </body>

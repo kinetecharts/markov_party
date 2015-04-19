@@ -1,6 +1,6 @@
 "use strict";
 
-var stateNames=['sitting', 'walking', 'running', 'hugging', 'following'];
+var stateNames=['sitting', 'talking', 'running', 'kissing', 'following'];
 
 var statesJson=[
     {
@@ -9,21 +9,21 @@ var statesJson=[
         active:true,
         transitionProbabilities:{
             sitting:0.7,
-            walking:0.2,
+            talking:0.2,
             running:0.1,
-            hugging:0.1,
+            kissing:0.1,
             following:0.2
         }
     },
     {
-        name:"walking",
+        name:"talking",
         image:null,
         active:false,
         transitionProbabilities:{
             sitting:0.2,
-            walking:0.7,
+            talking:0.7,
             running:0.1,
-            hugging:0.1,
+            kissing:0.1,
             following:0.2
         }
     },
@@ -33,21 +33,21 @@ var statesJson=[
         active:false,
         transitionProbabilities:{
             sitting:0.1,
-            walking:0.2,
+            talking:0.2,
             running:0.7,
-            hugging:0.1,
+            kissing:0.1,
             following:0.2
         }
     },
     {
-        name:"hugging",
+        name:"kissing",
         image:null,
         active:false,
         transitionProbabilities:{
             sitting:0.1,
-            walking:0.2,
+            talking:0.2,
             running:0.7,
-            hugging:0.1,
+            kissing:0.1,
             following:0.2
         }
     },
@@ -57,9 +57,9 @@ var statesJson=[
         active:false,
         transitionProbabilities:{
             sitting:0.1,
-            walking:0.2,
+            talking:0.2,
             running:0.7,
-            hugging:0.1,
+            kissing:0.1,
             following:0.2
         }
     }
@@ -86,11 +86,11 @@ var State = Backbone.Model.extend({
     },
     setProbability: function(ProbList){
         var tProb = this.attributes.transitionProbabilities;
-        var sum=ProbList.sitting+ProbList.walking+ProbList.running+ProbList.hugging+ProbList.following;
+        var sum=ProbList.sitting+ProbList.talking+ProbList.running+ProbList.kissing+ProbList.following;
         tProb.sitting = ProbList.sitting/sum;
-        tProb.walking = ProbList.walking/sum;
+        tProb.talking = ProbList.talking/sum;
         tProb.running = ProbList.running/sum;
-        tProb.hugging = ProbList.hugging/sum;
+        tProb.kissing = ProbList.kissing/sum;
         tProb.following = ProbList.following/sum;
     }
 });
@@ -105,12 +105,12 @@ var StateList = Backbone.Collection.extend({
         var newStateName;
         if(toss < tProb.sitting){
             newStateName = 'sitting';
-        }else if(toss < tProb.sitting+tProb.walking){
-            newStateName = 'walking';
-        }else if(toss < tProb.sitting+tProb.walking+tProb.running){
+        }else if(toss < tProb.sitting+tProb.talking){
+            newStateName = 'talking';
+        }else if(toss < tProb.sitting+tProb.talking+tProb.running){
             newStateName = 'running';
-        }else if(toss < tProb.sitting+tProb.walking+tProb.running+tProb.hugging){
-            newStateName = 'hugging';
+        }else if(toss < tProb.sitting+tProb.talking+tProb.running+tProb.kissing){
+            newStateName = 'kissing';
         }else{
             newStateName = 'following';
         }
@@ -153,12 +153,12 @@ var StateView = Backbone.View.extend({
         // debugger
         this.$('#slider-sitting').slider({min:0, max:1, step:0.01});
         this.$('#slider-sitting').slider('value', this.model.attributes.transitionProbabilities.sitting);
-        this.$('#slider-walking').slider({min:0, max:1, step:0.01});
-        this.$('#slider-walking').slider('value', this.model.attributes.transitionProbabilities.walking);
+        this.$('#slider-talking').slider({min:0, max:1, step:0.01});
+        this.$('#slider-talking').slider('value', this.model.attributes.transitionProbabilities.talking);
         this.$('#slider-running').slider({min:0, max:1, step:0.01});
         this.$('#slider-running').slider('value', this.model.attributes.transitionProbabilities.running);
-        this.$('#slider-hugging').slider({min:0, max:1, step:0.01});
-        this.$('#slider-hugging').slider('value', this.model.attributes.transitionProbabilities.hugging);
+        this.$('#slider-kissing').slider({min:0, max:1, step:0.01});
+        this.$('#slider-kissing').slider('value', this.model.attributes.transitionProbabilities.kissing);
         this.$('#slider-following').slider({min:0, max:1, step:0.01});
         this.$('#slider-following').slider('value', this.model.attributes.transitionProbabilities.following);
         this.updateCheckbox();
@@ -227,9 +227,9 @@ var StateView = Backbone.View.extend({
     },
     updateSliders: function(){
         this.$('#slider-sitting').slider('value', this.model.attributes.transitionProbabilities.sitting);
-        this.$('#slider-walking').slider('value', this.model.attributes.transitionProbabilities.walking);
+        this.$('#slider-talking').slider('value', this.model.attributes.transitionProbabilities.talking);
         this.$('#slider-running').slider('value', this.model.attributes.transitionProbabilities.running);
-        this.$('#slider-hugging').slider('value', this.model.attributes.transitionProbabilities.hugging);
+        this.$('#slider-kissing').slider('value', this.model.attributes.transitionProbabilities.kissing);
         this.$('#slider-following').slider('value', this.model.attributes.transitionProbabilities.following);
     }
 });
@@ -243,10 +243,15 @@ stateList.models.forEach(function(model){
 
 setInterval(function(){
     stateList.switchState();
-}, 5000);
+}, 10000);
 
 
 $(function(){
+    $('#state-list').hide();
+    $('#toggle1').click(function(){
+        if(this.checked) $('#state-list').show();
+        else $('#state-list').hide();
+    });
     $('#samples').selectmenu()
         .on("selectmenuchange", function(event, ui){
             var name = ui.item.value;
