@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 	<script type="text/javascript" src="lib/jquery-2.1.1.js"></script>
 	<script type="text/javascript" src="lib/jquery-ui.js"></script>
-	<script type="text/javascript" src="lib/Underscore.js"></script>
+	<script type="text/javascript" src="lib/lodash.js"></script>
 	<script type="text/javascript" src="lib/Backbone.js"></script>
 	<script type="text/javascript" src="lib/backbone-fsm.js"></script>
 </head>
@@ -55,11 +55,11 @@
 		  <input class="toggle" type="checkbox" <%= active ? 'checked="checked"' : '' %> />
 		  <label><%- name %></label>
 		</div>
-		<div id="slider-sitting" class="state-slider"></div>
-		<div id="slider-talking" class="state-slider"></div>
-		<div id="slider-running" class="state-slider"></div>
-		<div id="slider-kissing" class="state-slider"></div>
-		<div id="slider-following" class="state-slider"></div>
+		<div id="slider-0" class="state-slider"></div>
+		<div id="slider-1" class="state-slider"></div>
+		<div id="slider-2" class="state-slider"></div>
+		<div id="slider-3" class="state-slider"></div>
+		<div id="slider-4" class="state-slider"></div>
 	</script>
 
 	<script type="text/template" id="makov-template">
@@ -72,5 +72,5 @@
 
 </body>
 <script type="text/javascript" src="js/samples.js"></script>
-<script type="text/javascript" src="js/makov.js"></script>
+<script type="text/javascript" src="js/markov.js"></script>
 </html>
