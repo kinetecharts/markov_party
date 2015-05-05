@@ -78,10 +78,6 @@ var StateList = Backbone.Collection.extend({
     }
 });
 
-var states = statesJson.map(function(s){return new State(s);});
-var stateList=new StateList(states);
-stateList.where({active:true})
-
 var StateView = Backbone.View.extend({
     tagName: "li",
     template: _.template($('#state-template').html()),
@@ -154,9 +150,9 @@ var StateView = Backbone.View.extend({
     updateCheckbox: function(){
         this.$('.toggle').prop('checked', this.model.attributes.active);
         if(this.model.attributes.active){
-            $('#image-'+this.model.attributes.name).show();
+            $('#image-'+stateNames.indexOf(this.model.attributes.name)).show();
         }else{
-            $('#image-'+this.model.attributes.name).hide();
+            $('#image-'+stateNames.indexOf(this.model.attributes.name)).hide();
         }
     },
     updateSliders: function(){
@@ -168,32 +164,46 @@ var StateView = Backbone.View.extend({
     }
 });
 
-var stateViews=[];
-stateList.models.forEach(function(model){
-    var sv = new StateView({model:model});
-    stateViews.push(sv);
-});
-
-// stateList.setProbability(samples[1].transition);
-
-setInterval(function(){
-    stateList.switchState();
-}, 10000);
-
+var createImageDivs=function(){
+    var root = $('#markov-images');
+    for(var i=0; i<numState; i++){
+        var div = $('<div/>', {id:"image-"+i, class:"image"});
+        var fname = statesJson[i].image;
+        div.prepend('<img src="'+fname+'" class="image"/>');
+        root.append(div)
+    }
+};
 
 $(function(){
+    createImageDivs();
     $('#state-list').hide();
     $('#toggle1').click(function(){
         if(this.checked) $('#state-list').show();
         else $('#state-list').hide();
     });
+
+    var states = statesJson.map(function(s){return new State(s);});
+    var stateList=new StateList(states);
+    window.stateList = stateList;
+
+    var stateViews=[];
+    window.stateViews = stateViews;
+    stateList.models.forEach(function(model){
+        var sv = new StateView({model:model});
+        stateViews.push(sv);
+    });
+
     $('#samples').selectmenu()
         .on("selectmenuchange", function(event, ui){
             var name = ui.item.value;
             // debugger
             stateList.setProbability(samples.filter(function(s){return s.name == name;})[0].transition);
         });
+
     stateList.setProbability(samples[1].transition);
-    // stateList.setProbability(samples.excited);
+
+    setInterval(function(){
+        stateList.switchState();
+    }, 1000);
 });
 

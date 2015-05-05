@@ -6,27 +6,32 @@ var stateNames=['sitting', 'talking', 'running', 'kissing', 'following'];
 var statesJson=[
     {
         name:"sitting",
-        image:null,
+        image:"images/white.png",
+        // image:"images/sitting.gif",
         active:true,
     },
     {
         name:"talking",
-        image:null,
+        image:"images/black.png",
+        // image:"images/talking.gif",
         active:false,
     },
     {
         name:"running",
-        image:null,
+        image:"images/red.png",
+        // image:"images/running.gif",
         active:false,
     },
     {
         name:"kissing",
-        image:null,
+        image:"images/blue.png",
+        // image:"images/kissing.gif",
         active:false,
     },
     {
         name:"following",
-        image:null,
+        image:"images/green.png",
+        // image:"images/following.gif",
         active:false,
     }
 ];
